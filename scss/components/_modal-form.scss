@@ -1,0 +1,219 @@
+.backdrop {
+    @media screen and (max-width: 767px) {
+        padding: 15px;
+    }
+
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity $TimingFunction,
+    visibility $TimingFunction;
+    overflow-y: scroll;
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.modal {
+    position: relative;
+    min-width: 90vw;
+    background-color: $WhiteTextColor;
+    border-radius: 4px;
+    @extend %box-shadow-team;
+    transition: translate $TimingFunction, box-shadow $TimingFunction;
+
+    @media screen and (max-width: 549px) {
+        height: 650px;
+    }
+
+    @media screen and (min-width: 480px) {
+        min-width: 450px;
+    }
+
+    @media screen and (min-width: 550px) {
+        margin: auto;
+        min-height: 581px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        min-width: 528px;
+    }
+
+    &__icon {
+        fill: currentColor;
+    }
+}
+
+.modal__button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    @include FlexJustiAlign();
+    border-radius: 50%;
+    border-color: rgba(0, 0, 0, 0.1);
+    background-color: $WhiteTextColor;
+    transition: color $TimingFunction;
+
+    &:focus,
+    &:hover {
+        color: $AccentColor;
+    }
+}
+
+.modal-form {
+    padding: 40px;
+
+    @media screen and (max-width: 479px) {
+        padding: 25px;
+    }
+
+    &__title {
+        width: 370px;
+        font-size: 20px;
+        line-height: 1.5;
+        text-align: center;
+        margin-bottom: 12px;
+        color: $SecondTextColor;
+
+        @media screen and (max-width: 479px) {
+            width: 100%;
+        }
+
+        @media screen and (min-width: 1200px) {
+            line-height: 1.17;
+            width: 100%;
+        }
+    }
+}
+
+.modal-form__link {
+    text-decoration: underline;
+    color: $AccentColor;
+    padding-left: 3px;
+}
+
+.modal-form__label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+}
+
+.modal-form__label:focus,
+.modal-form__label:hover {
+    color: $AccentColor;
+
+    @media screen and (min-width: 768px) {
+        color: $MainTextColor;
+    }
+}
+
+.modal-form__input {
+    bottom: -1px;
+    margin-top: 4px;
+    padding: 12px 42px;
+    border-radius: 4px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    outline: none;
+    transition: border-color $TimingFunction;
+
+    &:focus {
+        border-color: $AccentColor;
+    }
+}
+
+.modal-form__icon {
+    position: absolute;
+    bottom: 11px;
+    left: 12px;
+    transition: fill $TimingFunction;
+
+    .modal-form__input:focus~& {
+        fill: $AccentColor;
+    }
+}
+
+.modal-form--comment {
+    resize: none;
+    padding: 12px 16px;
+
+    &::placeholder {
+        color: rgba(117, 117, 117, 0.5);
+        font-size: 12px;
+        letter-spacing: 0.01em;
+    }
+}
+
+.modal-form__label--checkbox {
+    @include FlexJustiAlign();
+    margin-top: 20px;
+    font-size: 12px;
+
+    @media screen and (max-width: 479px) {
+        display: inline-block;
+    }
+
+    @media screen and (min-width: 1200px) {
+        line-height: 1.71;
+        font-size: 14px;
+    }
+}
+
+.modal-form__input--checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+
+    &:checked+.modal-form__icon--checkbox {
+        background-color: $AccentColor;
+        fill: $WhiteTextColor;
+        border-color: $AccentColor;
+    }
+}
+
+.modal-form__icon--checkbox {
+    width: 16px;
+    height: 15px;
+    margin-right: 7px;
+    border-radius: 2px;
+    border: 2px solid $SecondTextColor;
+}
+
+.button-wrap {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.button-wrap__send {
+    padding: 10px 56px;
+    transition: background-color $TimingFunction, box-shadow $TimingFunction;
+
+    &:focus,
+    &:hover {
+        background-color: $BackgroundAccentColor;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+    }
+}
+
